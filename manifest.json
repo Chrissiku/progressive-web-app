@@ -10,6 +10,12 @@
     {
       "src": "/img/icons/icon-72x72.png",
       "type": "image/png",
+      "sizes": "72x72",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/icons/icon-72x72.png",
+      "type": "image/png",
       "sizes": "72x72"
     },
     {
