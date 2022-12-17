@@ -1,4 +1,4 @@
-const staticCacheName = "site-static";
+const staticCacheName = "site-static-v1";
 const assets = [
   "/",
   "/manifest.json",
@@ -10,8 +10,9 @@ const assets = [
   "/css/materialize.min.css",
   "/img/dish.png",
   "https://fonts.googleapis.com/icon?family=Material+Icons",
-  "https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2"
+  "https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2",
 ];
+
 // Service worker installation
 self.addEventListener("install", (evt) => {
   evt.waitUntil(
@@ -24,7 +25,17 @@ self.addEventListener("install", (evt) => {
 
 // Service worker activation
 self.addEventListener("activate", (evt) => {
-  console.log("Activated");
+  // console.log("Activated");
+  evt.waitUntil(
+    caches.keys().then((keys) => {
+      // console.log(keys);
+      return Promise.all(
+        keys
+          .filter((key) => key !== staticCacheName)
+          .map((key) => caches.delete(key))
+      );
+    })
+  );
 });
 
 // Fetch event
