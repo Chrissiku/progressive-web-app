@@ -27,9 +27,8 @@ Install all dependencies:
 ```sh
 npm install
 ```
-
 At this point you should start browsing the app exec rspec
-```
+
 ## Author
 
 👤 **Chris Siku**
